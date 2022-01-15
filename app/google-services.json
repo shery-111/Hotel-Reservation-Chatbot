@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "162364663159",
+    "project_id": "hotel-reservation-chatbot",
+    "storage_bucket": "hotel-reservation-chatbot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162364663159:android:3521259483ea9b8bebed72",
+        "android_client_info": {
+          "package_name": "com.example.hotelreservationchatbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "162364663159-7qpn78fkl5tn4ljp2c74nhes2ngn5fju.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDejZJZxNKK_rrh1ud5hV-tx1W7ugExXO0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "162364663159-7qpn78fkl5tn4ljp2c74nhes2ngn5fju.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

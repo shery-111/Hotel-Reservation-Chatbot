@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="1000in"
+        android:layout_height="1450dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/logo1" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="324dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="86dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="21dp"
+        android:ellipsize="middle"
+        android:fontFamily="cursive"
+        android:includeFontPadding="true"
+        android:text="Who Are"
+        android:textColor="#FAF6F6"
+        android:textColorHighlight="#F8F5F5"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="299dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="95dp"
+        android:ellipsize="middle"
+        android:fontFamily="cursive"
+        android:includeFontPadding="true"
+        android:text="You"
+        android:textColor="#FAF6F6"
+        android:textColorHighlight="#131313"
+        android:textSize="70sp"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/travler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+    <Button
+        android:id="@+id/travler"
+        android:layout_width="0dp"
+        android:layout_height="133dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="200dp"
+        android:ellipsize="middle"
+        android:fontFamily="cursive"
+        android:foregroundGravity="fill"
+        android:text="Traveler"
+        android:textColor="#FAF6F6"
+        android:textSize="26sp"
+        android:textStyle="bold|italic"
+        app:backgroundTint="#F60505"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/hotelstaff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/hotelstaff"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="15dp"
+        android:ellipsize="middle"
+        android:fontFamily="cursive"
+        android:foregroundGravity="fill"
+        android:text="Hotel Staff"
+        android:textColor="#FAF6F6"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:backgroundTint="#F10202"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/travler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/travler"
+        app:layout_constraintTop_toTopOf="@+id/travler" />
+</androidx.constraintlayout.widget.ConstraintLayout>
