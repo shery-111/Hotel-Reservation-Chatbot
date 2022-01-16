@@ -11,6 +11,11 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import org.w3c.dom.Text
 
@@ -24,8 +29,12 @@ class Login : AppCompatActivity() {
         var forgot=findViewById<TextView>(R.id.forgot)
         var register=findViewById<TextView>(R.id.register)
 
+
+        forgot.setOnClickListener {
+            startActivity(Intent(this,Forgot::class.java))
+        }
         val currentUser = auth.currentUser
-        if(currentUser != null) {
+        if(currentUser == null) {
         Toast.makeText(this,"Logged in",Toast.LENGTH_LONG).show()
 
             register.setOnClickListener {
@@ -59,6 +68,41 @@ class Login : AppCompatActivity() {
                         }
                     }
             }
+        }
+        else
+        {
+
+            val database=Firebase.database
+            val user = auth.currentUser
+            val uid: String = user?.uid.toString()
+            val db=database.getReference(uid)
+            db.addValueEventListener(object: ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    for(obj in snapshot.children)
+                    {
+                        var temp=obj.getValue<Profile>()
+                        if(temp?.user==false)
+                        {
+                            startActivity(Intent(this@Login,Traveler::class.java))
+                            finish()
+                        }
+                        else
+                        {
+                            startActivity(Intent(this@Login,HotelStaff::class.java))
+                            finish()
+                        }
+                    }
+
+
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Toast.makeText(this@Login,"Data cancelled",Toast.LENGTH_LONG).show()
+                }
+
+            })
         }
 
     }

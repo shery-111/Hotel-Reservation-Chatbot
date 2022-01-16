@@ -18,8 +18,8 @@ class who_r_u : AppCompatActivity() {
         bool=mysharedpref.getBoolean("firsttime",true)
         if(bool) {
 
-            var button1 = findViewById<Button>(R.id.travler)
-            var button2 = findViewById<Button>(R.id.hotelstaff)
+            var button1 = findViewById<Button>(R.id.rec_hotels)
+            var button2 = findViewById<Button>(R.id.edit_hotel)
 
             button1.setOnClickListener {
                 var intent = Intent(this, Login::class.java)

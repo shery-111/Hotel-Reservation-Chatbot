@@ -2,6 +2,7 @@ package com.example.hotelreservationchatbot
 
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -70,6 +71,16 @@ class Register : AppCompatActivity() {
                             val myRef = database.getReference(uid)
                             myRef.child("Profile").setValue(prof)
                             Toast.makeText(this, "Successful Registration", Toast.LENGTH_LONG).show()
+                            if(!user11)
+                            {
+                                startActivity(Intent(this,Traveler::class.java))
+                                finish()
+                            }
+                            else
+                            {
+                                startActivity(Intent(this,HotelStaff::class.java))
+                                finish()
+                            }
 
                         } else {
                             // If sign in fails, display a message to the user.
