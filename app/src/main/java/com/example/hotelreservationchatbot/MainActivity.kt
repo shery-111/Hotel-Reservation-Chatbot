@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()
+        val imageView = findViewById<ImageView>(R.id.splash_pic)
+        imageView.alpha = 0.25f
         var myanim= AnimationUtils.loadAnimation(this,R.anim.anim1)
         var myanim1= AnimationUtils.loadAnimation(this,R.anim.anim2)
         var image=findViewById<ImageView>(R.id.imageView1)

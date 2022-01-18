@@ -6,12 +6,23 @@
     android:layout_height="match_parent"
     android:background="@drawable/logo1"
     tools:context=".MainActivity">
+    <ImageView
+        android:id="@+id/loginp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/_378" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="#3fff"
         android:gravity="center"
         android:padding="10dp">
 
@@ -82,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:fontFamily="sans-serif-condensed-light"
-            android:text="Forget Password?"
+            android:text="Forgot Password?"
             android:textColor="#FFFBF6"
             android:textSize="18dp"
             android:textStyle="bold|italic" />

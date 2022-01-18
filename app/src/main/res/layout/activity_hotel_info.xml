@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/logo1"
     tools:context=".MainActivity">
-    <ImageView
-        android:id="@+id/regp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="296dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/_378" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,73 +16,86 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-150dp"
+            android:layout_marginTop="-70dp"
+            android:layout_marginBottom="70dp"
             android:background="@drawable/circle"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:text="Register Yourself"
+            android:text="Hotel Info"
             android:textColor="#ffffff"
             android:textSize="80sp"
             android:textStyle="bold|italic" />
 
         <EditText
-            android:id="@+id/full_name"
+            android:id="@+id/hname"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
-            android:hint="Enter Full Name"
+            android:hint="Hotel Name"
             android:textColorHint="#FFFBF6" />
 
         <EditText
-            android:id="@+id/cnic"
+            android:id="@+id/address"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
-            android:hint="Enter CNIC/Passport No"
+            android:hint="Address"
             android:textColorHint="#FFFBF6" />
 
         <EditText
-            android:id="@+id/e_mail"
+            android:id="@+id/city"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
-            android:hint="Enter Email"
+            android:hint="City"
             android:textColorHint="#FFFBF6" />
 
         <EditText
-            android:id="@+id/phone"
+            android:id="@+id/phn_hotel"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
-            android:hint="Enter Phone NUmber"
+            android:hint="Phone Number"
             android:textColorHint="#FFFBF6" />
 
         <EditText
-            android:id="@+id/passw"
+            android:id="@+id/economic"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
-            android:hint="Enter Password"
-            android:inputType="textPassword"
+            android:hint="Economical Room Price"
+            android:inputType="number"
             android:textColorHint="#FFFBF6" />
+
+        <EditText
+            android:id="@+id/luxury"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custombutton"
+            android:gravity="center"
+            android:hint="Luxury Room Price (Optional)"
+            android:inputType="number"
+            android:textColorHint="#FFFBF6" />
+
 
         <Button
-            android:id="@+id/reg_btn"
+            android:id="@+id/save_btn"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/custombutton2"
-            android:text="Register"
+            android:text="Save"
             android:textAllCaps="false"
             android:textColor="#FFFBF6"
             android:textSize="14sp"
@@ -105,6 +105,7 @@
             android:layout_height="2dp"
             android:background="#3fff"
             android:layout_marginTop="15dp"/>
+
 
 
 

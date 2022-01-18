@@ -12,6 +12,7 @@ class Traveler : AppCompatActivity() {
         supportActionBar?.hide()
         var trav=findViewById<Button>(R.id.rec_hotels)
         var chat=findViewById<Button>(R.id.chatbot_btn)
+        var ac=findViewById<Button>(R.id.accountinfo)
 
         trav.setOnClickListener {
 
@@ -19,6 +20,10 @@ class Traveler : AppCompatActivity() {
 
         chat.setOnClickListener {
             startActivity(Intent(this,Chatbot::class.java))
+
+        }
+        ac.setOnClickListener {
+            startActivity(Intent(this,AccountInfo::class.java))
 
         }
     }

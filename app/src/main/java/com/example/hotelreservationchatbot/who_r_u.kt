@@ -5,12 +5,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 
 class who_r_u : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_who_ru)
         supportActionBar?.hide()
+        val imageView = findViewById<ImageView>(R.id.imageView3)
+        imageView.alpha = 0.25f
         val database="mydb"
         val mysharedpref=baseContext.getSharedPreferences(database, Context.MODE_PRIVATE)
         val editor=mysharedpref.edit()

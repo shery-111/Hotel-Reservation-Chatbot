@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -15,6 +16,8 @@ class Forgot : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forgot)
         supportActionBar?.hide()
+        val imageView = findViewById<ImageView>(R.id.fgp)
+        imageView.alpha = 0.25f
         var auth: FirebaseAuth = Firebase.auth
         var btn=findViewById<Button>(R.id.fg_btn)
 

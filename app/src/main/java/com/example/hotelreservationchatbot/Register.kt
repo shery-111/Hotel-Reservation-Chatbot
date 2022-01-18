@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,20 +21,21 @@ class Register : AppCompatActivity() {
         setContentView(R.layout.activity_register)
         supportActionBar?.hide()
         val database="mydb"
+        val imageView = findViewById<ImageView>(R.id.regp)
+        imageView.alpha = 0.25f
         var auth: FirebaseAuth= Firebase.auth
         var btn=findViewById<Button>(R.id.reg_btn)
         val mysharedpref=baseContext.getSharedPreferences(database, Context.MODE_PRIVATE)
         var user11=mysharedpref.getBoolean("user",false)
-//        if(user==false)
-//        {
-//            //then traveler
-//            Toast.makeText(this,"Traveler",Toast.LENGTH_LONG).show()
-//        }
-//        else
-//        {
-//            //HotelStaff
-//            Toast.makeText(this,"Hotel Staff",Toast.LENGTH_LONG).show()
-//        }
+        var us:String="false"
+        if(!user11)
+        {
+            us="false"
+        }
+        else
+        {
+            us="true"
+        }
 
 
         btn.setOnClickListener {
@@ -58,7 +60,7 @@ class Register : AppCompatActivity() {
             else {
                 var prof:Profile=Profile()
                 val user = Firebase.auth.currentUser
-                prof.initializeobject(fullnm,cnic,phone,user11)
+                prof.initializeobject(fullnm,cnic,phone,us)
                 auth.createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {

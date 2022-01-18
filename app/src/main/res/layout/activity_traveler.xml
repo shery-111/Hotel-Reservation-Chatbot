@@ -3,19 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/logo1">
 
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="1000in"
-        android:layout_height="1450dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/logo1" />
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView1"-->
+<!--        android:layout_width="1000in"-->
+<!--        android:layout_height="1450dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        app:srcCompat="@drawable/logo1" />-->
 
     <TextView
         android:id="@+id/textView1"
@@ -58,8 +59,7 @@
         app:layout_constraintBottom_toTopOf="@+id/chatbot_btn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView1"
-         />
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
     <Button
         android:id="@+id/chatbot_btn"
@@ -67,7 +67,7 @@
         android:layout_height="0dp"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="225dp"
+        android:layout_marginBottom="9dp"
         android:ellipsize="middle"
         android:fontFamily="cursive"
         android:foregroundGravity="fill"
@@ -77,8 +77,29 @@
         android:textStyle="bold"
         app:backgroundTint="#F10202"
         app:cornerRadius="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/accountinfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rec_hotels" />
+
+    <Button
+        android:id="@+id/accountinfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="68dp"
+        android:ellipsize="middle"
+        android:fontFamily="cursive"
+        android:foregroundGravity="fill"
+        android:text="Account Info"
+        android:textColor="#FAF6F6"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:backgroundTint="#F10202"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chatbot_btn" />
 </androidx.constraintlayout.widget.ConstraintLayout>

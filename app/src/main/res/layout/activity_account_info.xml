@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/fgp"
+        android:id="@+id/acp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="296dp"
@@ -27,35 +27,69 @@
         android:gravity="center"
         android:padding="10dp">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-180dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginTop="-70dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/circle"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:text="Forgot Password"
+            android:text="My Account Info"
             android:textColor="#ffffff"
             android:textSize="80sp"
             android:textStyle="bold|italic" />
 
         <EditText
-            android:id="@+id/forgot_email"
+            android:id="@+id/fullnm"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/custombutton"
             android:gravity="center"
-            android:hint="Enter Email"
+            android:hint="Full Name"
             android:textColorHint="#FFFBF6" />
 
+        <EditText
+            android:id="@+id/cnic"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custombutton"
+            android:gravity="center"
+            android:hint="CNIC/Passport No"
+            android:textColorHint="#FFFBF6" />
+
+        <EditText
+            android:id="@+id/email_ai"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custombutton"
+            android:editable="false"
+            android:gravity="center"
+            android:hint="Email"
+            android:textColorHint="#FFFBF6" />
+
+        <EditText
+            android:id="@+id/phone_ai"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/custombutton"
+            android:gravity="center"
+            android:hint="Phone Number"
+            android:textColorHint="#FFFBF6" />
+
+
         <Button
-            android:id="@+id/fg_btn"
+            android:id="@+id/save"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/custombutton2"
-            android:text="Submit"
+            android:text="Save"
             android:textAllCaps="false"
             android:textColor="#FFFBF6"
             android:textSize="14sp"
@@ -65,6 +99,10 @@
             android:layout_height="2dp"
             android:background="#3fff"
             android:layout_marginTop="15dp"/>
+
+
+
+
 
     </LinearLayout>
 
