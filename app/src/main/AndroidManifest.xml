@@ -14,12 +14,13 @@
         <activity android:name=".HotelInfo"></activity>
         <activity android:name=".AccountInfo" />
         <activity android:name=".Chatbot" />
-        <activity android:name=".Traveler" />
         <activity android:name=".Forgot" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".who_r_u" />
         <activity android:name=".HotelStaff" android:theme="@style/Theme.HotelReservationChatbot..NoActionBar"
+            android:exported="true"/>
+        <activity android:name=".Traveler" android:theme="@style/Theme.HotelReservationChatbot..NoActionBar"
             android:exported="true"/>
         <activity android:name=".MainActivity">
             <intent-filter>

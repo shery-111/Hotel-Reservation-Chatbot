@@ -27,6 +27,7 @@ class AccountInfo : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAccountInfoBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        var user22:String=""
         supportActionBar?.hide()
         val imageView = findViewById<ImageView>(R.id.acp)
         imageView.alpha = 0.25f
@@ -49,6 +50,7 @@ class AccountInfo : AppCompatActivity() {
                     cnic.setText(temp?.cnic)
                     phone.setText(temp?.phone)
                     email.setText(user?.email)
+                    user22= temp?.user.toString()
                     break
                 }
             }
@@ -76,13 +78,25 @@ class AccountInfo : AppCompatActivity() {
                 setPositiveButton("Yes",
                     DialogInterface.OnClickListener { dialog, id ->
                         updateData(fnm, cn, phn, uid)
+                        if(user22=="false"){
                         startActivity(Intent(this@AccountInfo,Traveler::class.java))
-                        finish()
+                        finish()}
+                        else
+                        {
+                            startActivity(Intent(this@AccountInfo,HotelStaff::class.java))
+                            finish()
+                        }
                     })
                 setNegativeButton("Go back",
                     DialogInterface.OnClickListener { dialog, id ->
-                        startActivity(Intent(this@AccountInfo,Traveler::class.java))
-                        finish()
+                        if(user22=="false"){
+                            startActivity(Intent(this@AccountInfo,Traveler::class.java))
+                            finish()}
+                        else
+                        {
+                            startActivity(Intent(this@AccountInfo,HotelStaff::class.java))
+                            finish()
+                        }
                     })
             }
                 builder.create()
