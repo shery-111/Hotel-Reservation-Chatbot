@@ -2,7 +2,13 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Name" />
-    <item android:title="Email" />
-    <item android:title="Sign Out" />
+    <item
+        android:id="@+id/menu_name"
+        android:title="Name" />
+    <item
+        android:id="@+id/menu_email"
+        android:title="Email" />
+    <item
+        android:id="@+id/signout"
+        android:title="Sign Out" />
 </menu>

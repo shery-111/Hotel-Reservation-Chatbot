@@ -3,12 +3,16 @@ package com.example.hotelreservationchatbot
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.ActionBarDrawerToggle
+import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_hotel_staff.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class Traveler : AppCompatActivity() {
+class Traveler : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+    private lateinit var user: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_traveler)
@@ -38,5 +42,15 @@ class Traveler : AppCompatActivity() {
             startActivity(Intent(this,AccountInfo::class.java))
 
         }
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        if(item.itemId==R.id.signout)
+        {
+            user.signOut()
+            startActivity(Intent(this,Login::class.java))
+            finish()
+        }
+        return true
     }
 }

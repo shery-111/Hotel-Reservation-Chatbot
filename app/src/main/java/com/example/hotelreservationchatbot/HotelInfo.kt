@@ -23,12 +23,7 @@ class HotelInfo : AppCompatActivity() {
         var auth: FirebaseAuth = Firebase.auth
 
         var btn=findViewById<Button>(R.id.save_btn)
-        val database="mydb"
-        val mysharedpref=baseContext.getSharedPreferences(database, Context.MODE_PRIVATE)
-        val editor=mysharedpref.edit()
-        var bool:Boolean
-        bool=mysharedpref.getBoolean("hotelinfo",true)
-        if(bool) {
+
             btn.setOnClickListener {
                 var hname = findViewById<EditText>(R.id.hname).text.toString()
                 var address = findViewById<EditText>(R.id.address).text.toString()
@@ -56,18 +51,20 @@ class HotelInfo : AppCompatActivity() {
                     val database = Firebase.database
                     val myRef = database.getReference("Hotels")
                     myRef.child(uid).setValue(hotel)
-                    bool=false
-                    editor.putBoolean("hotelinfo",bool)
-                    editor.apply()
-                    editor.commit()
+                    Toast.makeText(this,"Successfully saved Hotel Info",Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this,HotelStaff::class.java))
+                    finish()
+
+                    onBackPressed()
 
                 }
             }
-        }
-        else
-        {
-            startActivity(Intent(this,HotelStaff::class.java))
-            finish()
-        }
+
+    }
+    override fun onBackPressed() {
+
+        startActivity(Intent(this,HotelStaff::class.java))
+        finish()
+
     }
 }

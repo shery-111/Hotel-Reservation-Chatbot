@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/logo1"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/regp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/_378" />
+    <!--    <![CDATA[-->
+
+    <!--    android:id="@+id/linearLayout"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    android:gravity="center"-->
+    <!--    android:orientation="vertical"-->
+    <!--    android:padding="10dp"-->
+    <!--    app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--    app:layout_constraintEnd_toEndOf="parent"-->
+    <!--    app:layout_constraintStart_toStartOf="parent"-->
+    <!--    app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--    ]]>-->
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="175dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="451dp"
+        android:layout_marginEnd="233dp"
+        android:layout_marginRight="233dp"
+        android:layout_marginBottom="209dp"
+        android:background="@drawable/custombutton2"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:includeFontPadding="true"
+        android:text="Economical"
+        android:textColor="#F8F4F4"
+        android:textSize="35sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="176dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginBottom="540dp"
+        android:background="@drawable/circle"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Room Type"
+        android:textColor="#FBF7F7"
+        android:textColorHighlight="#151515"
+        android:textSize="80sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="99dp"
+        tools:layout_conversion_absoluteWidth="310dp" />
+
+    <TextView
+        android:id="@+id/txtlux"
+        android:layout_width="170dp"
+        android:layout_height="71dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginEnd="228dp"
+        android:layout_marginBottom="346dp"
+        android:background="@drawable/custombutton2"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:includeFontPadding="true"
+        android:text="Luxury"
+        android:textColor="#F8F4F4"
+        android:textSize="45sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="19dp"
+        tools:layout_conversion_absoluteWidth="176dp" />
+
+    <Button
+        android:id="@+id/reg_btn"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginLeft="122dp"
+        android:layout_marginTop="568dp"
+        android:layout_marginEnd="138dp"
+        android:layout_marginRight="138dp"
+        android:layout_marginBottom="97dp"
+        android:background="@drawable/custombutton2"
+        android:text="Update"
+        android:textAllCaps="false"
+        android:textColor="#FFFBF6"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        app:backgroundTint="#FA0202"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="40dp"
+        tools:layout_conversion_absoluteWidth="250dp" />
+
+    <EditText
+        android:id="@+id/luxrooms"
+        android:layout_width="180dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="199dp"
+        android:layout_marginLeft="199dp"
+        android:layout_marginTop="318dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="346dp"
+        android:ems="10"
+        android:hint="Enter No. of Rooms"
+        android:inputType="number"
+        android:textColorHint="#101010"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/ecorooms"
+        android:layout_width="184dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="201dp"
+        android:layout_marginLeft="201dp"
+        android:layout_marginTop="448dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="219dp"
+        android:ems="10"
+        android:hint="Enter No. of Rooms"
+        android:inputType="number"
+        android:textColorHint="#131313"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
