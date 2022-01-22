@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/logo1"
+    tools:context=".Bookdetails">
+
+    <ImageView
+        android:id="@+id/fgp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="296dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/_378" />
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="536dp"
+        android:fontFamily="cursive"
+        android:gravity="center"
+        android:text="Booking Details"
+        android:textColor="#ffffff"
+        android:textSize="80sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/hn"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="211dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="480dp"
+        android:background="@drawable/custombutton"
+        android:gravity="center"
+        android:hint="Hotel Name"
+        android:textColorHint="#FFFBF6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/lc"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="269dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="422dp"
+        android:background="@drawable/custombutton"
+        android:gravity="center"
+        android:hint="Location"
+        android:textColorHint="#FFFBF6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/prc"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="385dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="306dp"
+        android:background="@drawable/custombutton"
+        android:gravity="center"
+        android:hint="Price per day"
+        android:textColorHint="#FFFBF6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/chkout"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="191dp"
+        android:background="@drawable/custombutton"
+        android:gravity="center"
+        android:hint="Checkout Date"
+        android:textColorHint="#FFFBF6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/trms"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="552dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="139dp"
+        android:background="@drawable/custombutton"
+        android:gravity="center"
+        android:hint="Total Rooms"
+        android:textColorHint="#FFFBF6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/rmtype"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="444dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="247dp"
+        android:background="@drawable/custombutton"
+        android:gravity="center"
+        android:hint="Room Type"
+        android:textColorHint="#FFFBF6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/chkin"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="361dp"
+        android:background="@drawable/custombutton"
+        android:gravity="center"
+        android:hint="Checkin Date"
+        android:textColorHint="#FFFBF6"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/chkbtn"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="627dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/custombutton2"
+        android:text="Checkout"
+        android:textAllCaps="false"
+        android:textColor="#FFFBF6"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

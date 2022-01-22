@@ -64,20 +64,23 @@
             android:id="@+id/message_box"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
             android:hint="Enter your message"
-            android:background="@android:color/transparent"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/send_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"
+        android:backgroundTint="@color/teal_200"
         android:src="@drawable/ic_send"
         app:fabSize="normal"
-        app:layout_constraintStart_toEndOf="@id/message_view"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/message_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

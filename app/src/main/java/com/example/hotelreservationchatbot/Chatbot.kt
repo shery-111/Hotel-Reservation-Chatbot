@@ -59,6 +59,10 @@ class Chatbot : AppCompatActivity() {
             ) {
                 if(response.body() != null || response.body()?.size != 0){
                     val message = response.body()!![0]
+                    if(message.toString().contains("Ap ne ye maloomat di hain, tasdeeq krein!"))
+                    {
+                        Toast.makeText(this@Chatbot,message.toString(),Toast.LENGTH_LONG).show()
+                    }
                     messageList.add(MessageClass(message.text,BOT))
                     adapter.notifyDataSetChanged()
                 }

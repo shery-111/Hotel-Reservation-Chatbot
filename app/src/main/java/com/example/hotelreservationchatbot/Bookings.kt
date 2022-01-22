@@ -7,6 +7,6 @@ class Bookings {
     var checkin=ArrayList<String>()
     var checkout=ArrayList<String>()
     var roomtype=ArrayList<String>()
-    var trooms=ArrayList<String>()
+    var trooms=ArrayList<Int>()
 
 }
