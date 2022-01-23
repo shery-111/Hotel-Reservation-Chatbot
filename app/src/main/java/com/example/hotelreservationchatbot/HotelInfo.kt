@@ -10,7 +10,11 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class HotelInfo : AppCompatActivity() {
@@ -22,8 +26,48 @@ class HotelInfo : AppCompatActivity() {
         supportActionBar?.hide()
         var auth: FirebaseAuth = Firebase.auth
 
+
+        val database = Firebase.database
+        val user = auth.currentUser
+        val uid: String = user?.uid.toString()
+        val db = database.getReference("Hotels")
+        var i=0
+        var ht=Hotel()
+        db.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                for (obj in snapshot.children) {
+                    var temp = obj.getValue<Hotel>()
+                    if(temp?.uid.toString()==uid)
+                    {
+                        ht.name=temp?.name.toString()
+                        ht.address=temp?.address.toString()
+                        ht.city=temp?.city.toString()
+                        ht.phone=temp?.phone.toString()
+                        ht.economic=temp?.economic.toString().toInt()
+                        ht.luxury=temp?.luxury.toString().toInt()
+                        i++
+                    }
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@HotelInfo, "Data cancelled", Toast.LENGTH_LONG).show()
+            }
+
+        })
+
+
+
+
+
+
+
+
         var btn=findViewById<Button>(R.id.save_btn)
 
+        if(i==0) {
             btn.setOnClickListener {
                 var hname = findViewById<EditText>(R.id.hname).text.toString()
                 var address = findViewById<EditText>(R.id.address).text.toString()
@@ -44,22 +88,40 @@ class HotelInfo : AppCompatActivity() {
                     Toast.makeText(this, "Enter correct Luxury room price", Toast.LENGTH_LONG)
                         .show()
                 } else {
-                    var hotel = Hotel()
-                    hotel.initializeobject(hname, address, phone, city, eco, lux)
+
                     val user = auth.currentUser
                     val uid: String = user?.uid.toString()
                     val database = Firebase.database
                     val myRef = database.getReference("Hotels")
-                    myRef.child(uid).setValue(hotel)
-                    Toast.makeText(this,"Successfully saved Hotel Info",Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this,HotelStaff::class.java))
+                    var hotel = Hotel()
+                    hotel.initializeobject(hname, address, phone, city, eco, lux, uid)
+                    myRef.setValue(hotel)
+                    Toast.makeText(this, "Successfully saved Hotel Info", Toast.LENGTH_LONG).show()
+                    startActivity(Intent(this, HotelStaff::class.java))
                     finish()
 
                     onBackPressed()
 
                 }
             }
-
+        }
+        else
+        {
+            var hname = findViewById<EditText>(R.id.hname)
+            var address = findViewById<EditText>(R.id.address)
+            var city = findViewById<EditText>(R.id.city)
+            var phone = findViewById<EditText>(R.id.phn_hotel)
+            var eco = findViewById<EditText>(R.id.economic)
+            var lux = findViewById<EditText>(R.id.luxury)
+            hname.setText(ht.name)
+            address.setText(ht.address)
+            city.setText(ht.city)
+            hname.setText(ht.name)
+            phone.setText(ht.phone)
+            eco.setText(ht.economic)
+            lux.setText(ht.luxury)
+            btn.setText("Back")
+        }
     }
     override fun onBackPressed() {
 

@@ -21,6 +21,8 @@ class Forgot : AppCompatActivity() {
         var auth: FirebaseAuth = Firebase.auth
         var btn=findViewById<Button>(R.id.chkbtn)
 
+        onBackPressed()
+
         btn.setOnClickListener {
             var email=findViewById<EditText>(R.id.forgot_email).text.toString()
             if(email.length>6)
@@ -39,5 +41,10 @@ class Forgot : AppCompatActivity() {
                 Toast.makeText(this,"Enter correct Email Format", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this,Login::class.java))
+        finish()
     }
 }

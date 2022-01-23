@@ -26,13 +26,14 @@ class RoomInfo : AppCompatActivity() {
         btn.setOnClickListener {
             var noeco=findViewById<EditText>(R.id.ecorooms).text.toString().toInt()
             var nolux=findViewById<EditText>(R.id.luxrooms).text.toString().toInt()
-            var rooms = Rooms()
-            rooms.initializeobject(noeco, nolux)
+
             val user = auth.currentUser
             val uid: String = user?.uid.toString()
             val database = Firebase.database
+            var rooms = Rooms()
+            rooms.initializeobject(noeco, nolux,uid)
             val myRef = database.getReference("Rooms")
-            myRef.child(uid).setValue(rooms)
+            myRef.setValue(rooms)
             Toast.makeText(this,"Successfully saved Hotel Rooms Info",Toast.LENGTH_LONG).show()
             startActivity(Intent(this,HotelStaff::class.java))
             finish()

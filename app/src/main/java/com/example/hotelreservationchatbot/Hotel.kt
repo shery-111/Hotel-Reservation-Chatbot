@@ -8,8 +8,9 @@ class Hotel {
     var phone:String?=null
     var economic:Int=0
     var luxury:Int=0
+    var uid:String=""
 
-    fun initializeobject(nm:String,add:String,ph:String, ct:String,eco:Int,lux:Int)
+    fun initializeobject(nm:String,add:String,ph:String, ct:String,eco:Int,lux:Int,ui:String)
     {
         name=nm
         address=add
@@ -17,5 +18,6 @@ class Hotel {
         city=ct
         economic=eco
         luxury=lux
+        uid=ui
     }
 }

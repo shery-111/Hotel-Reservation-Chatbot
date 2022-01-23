@@ -8,5 +8,6 @@ class Bookings {
     var checkout=ArrayList<String>()
     var roomtype=ArrayList<String>()
     var trooms=ArrayList<Int>()
+    var uid:String=""
 
 }

@@ -1,6 +1,7 @@
 package com.example.hotelreservationchatbot
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -39,7 +40,11 @@ class Bookdetails : AppCompatActivity() {
         if(checkout?.length>5)
         {
             chkout.setText(checkout)
-            chkbtn.visibility= View.INVISIBLE
+            chkbtn.setText("Back")
+            chkbtn.setOnClickListener {
+                startActivity(Intent(this,BookingsAll::class.java))
+                finish()
+            }
         }
         else
         {
@@ -48,8 +53,9 @@ class Bookdetails : AppCompatActivity() {
                     SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
 
                 chkout.setText(date)
+                checkout=date
                 Toast.makeText(this,"You have been checked out from Hotel! Checkout date added",Toast.LENGTH_LONG).show()
-
+                chkbtn.setText("Back")
             }
         }
 
