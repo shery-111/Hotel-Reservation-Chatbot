@@ -29,6 +29,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class Chatbot : AppCompatActivity() {
+    var city= listOf<String>("lahore","faisalabad","murree","abottabad","karachi","skardu","hunza","quetta")
+    var months= listOf<String>("jan","feb","mar","apr","jun","jul","aug","sep","oct","nov","dec")
     private lateinit var mainActivity:ActivityChatbotBinding
     private lateinit var messageList:ArrayList<MessageClass>
     private lateinit var database: DatabaseReference
@@ -65,7 +67,7 @@ class Chatbot : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
         val okHttpClient = OkHttpClient()
-        val retrofit = Retrofit.Builder().baseUrl("https://90e2-2400-adc5-1c3-e400-14ab-b726-7bbb-fb5b.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
+        val retrofit = Retrofit.Builder().baseUrl("https://278f-72-255-5-143.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
             GsonConverterFactory.create()).build()
         val messagerSender = retrofit.create(MessageSender::class.java)
         val response = messagerSender.messageSender(userMessage)
@@ -86,6 +88,21 @@ class Chatbot : AppCompatActivity() {
                         var sub3=lines[3].substringAfter(':')
                         sub3=sub3.replace("[^0-9]".toRegex(), "")
                         var sub4=lines[4].substringAfter(':')
+                        for(obj in city)
+                        {
+                            if(sub1.contains(obj,ignoreCase = true))
+                            {
+                                sub1=obj
+                            }
+                        }
+                        for(obj in months)
+                        {
+                            if(sub4.contains(obj,ignoreCase = true))
+                            {
+                                sub4=sub4.replace("[^0-9]".toRegex(), "")
+                                sub4=sub4+" "+obj
+                            }
+                        }
 //                        Toast.makeText(this@Chatbot,sub1+sub2+"\n"+sub3+"\n"+sub4,Toast.LENGTH_LONG).show()
                         var bk=Bookings()
                         var auth: FirebaseAuth = Firebase.auth
@@ -123,18 +140,21 @@ class Chatbot : AppCompatActivity() {
 
                                     }
                                 }
-                                bk.price.sort()
-                                bok.hname=bk.hname[0]
-                                bok.loc=bk.loc[0]
-                                bok.price=bk.price[0]
-                                bok.checkin=bk.checkin[0]
-                                bok.uid=uid
-                                bok.roomtype=bk.roomtype[0]
-                                bok.trooms=1
-                                bok.checkout=""
-                                bok.rate=false
-                                val myRef = database.getReference("Bookings")
-                                myRef.child(uid).child("Book"+System.currentTimeMillis()).setValue(bok)
+                                if(i>0)
+                                {
+                                    bk.price.sort()
+                                    bok.hname=bk.hname[0]
+                                    bok.loc=bk.loc[0]
+                                    bok.price=bk.price[0]
+                                    bok.checkin=bk.checkin[0]
+                                    bok.uid=uid
+                                    bok.roomtype=bk.roomtype[0]
+                                    bok.trooms=1
+                                    bok.checkout=""
+                                    bok.rate=false
+                                    val myRef = database.getReference("Bookings")
+                                    myRef.child(uid).child("Book"+System.currentTimeMillis()).setValue(bok)
+                                }
                                 var not=NotificationCompat.Builder(this@Chatbot)
                                 not.setContentTitle("Congrats!")
                                 not.setContentText("The desired Hotel has been booked!")

@@ -3,6 +3,7 @@ package com.example.hotelreservationchatbot
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +31,12 @@ class Bookdetails : AppCompatActivity() {
         var checkout=mysharedpref.getString("checkout","checkout date").toString()
         var trooms=mysharedpref.getInt("trooms",0).toString()
         var roomtype=mysharedpref.getString("roomtype","Room Type").toString()
-        var rate=mysharedpref.getBoolean("rate",false)
+        var rate1=mysharedpref.getBoolean("rate",false)
+
+        rate.setOnClickListener {
+            startActivity(Intent(this,Rating::class.java))
+            finish()
+        }
 
 
         hn.setText(hname)

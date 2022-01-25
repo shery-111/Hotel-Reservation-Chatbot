@@ -39,13 +39,14 @@ class Login : AppCompatActivity() {
         }
 
         val currentUser = auth.currentUser
-        if(currentUser == null) {
+
 //        Toast.makeText(this,"Logged in",Toast.LENGTH_LONG).show()
 
             logbt.setOnClickListener {
                 var email = findViewById<EditText>(R.id.email).text.toString()
                 var password = findViewById<EditText>(R.id.pass).text.toString()
 //                Toast.makeText(baseContext, email + password, Toast.LENGTH_SHORT).show()
+                    if(email!="" && password!=""){
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
@@ -104,8 +105,8 @@ class Login : AppCompatActivity() {
                             ).show()
 
                         }
-                    }
-            }
+                    }}
+
         }
 
     }

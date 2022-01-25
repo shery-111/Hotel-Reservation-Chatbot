@@ -20,50 +20,73 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/_378" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="83dp"
+        android:layout_marginBottom="453dp"
+        android:fontFamily="cursive"
         android:gravity="center"
-        android:padding="10dp">
+        android:text="Rate this Hotel"
+        android:textColor="#ffffff"
+        android:textSize="80sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-180dp"
-            android:layout_marginBottom="50dp"
-            android:fontFamily="cursive"
-            android:gravity="center"
-            android:text="Rate this Hotel"
-            android:textColor="#ffffff"
-            android:textSize="80sp"
-            android:textStyle="bold|italic" />
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="474dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginBottom="200dp"
+        android:numStars="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/ratebtn"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="573dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="118dp"
+        android:background="@drawable/custombutton2"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="#FFFBF6"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/ratebtn"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custombutton2"
-            android:text="Submit"
-            android:textAllCaps="false"
-            android:textColor="#FFFBF6"
-            android:textSize="14sp"
-            android:textStyle="bold|italic" />
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="#3fff"
-            android:layout_marginTop="15dp"/>
-
-
-
-    </LinearLayout>
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="281dp"
+        android:layout_height="114dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="308dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="309dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:hint="Give Review"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

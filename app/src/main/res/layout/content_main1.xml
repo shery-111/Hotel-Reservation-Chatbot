@@ -69,10 +69,10 @@
         android:id="@+id/tr4"
         android:layout_width="362dp"
         android:layout_height="95dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="548dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="99dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="535dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="101dp"
         android:ellipsize="middle"
         android:fontFamily="cursive"
         android:foregroundGravity="fill"
@@ -84,10 +84,8 @@
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/tr5"

@@ -47,7 +47,10 @@ class MainActivity : AppCompatActivity() {
 
                             for (obj in snapshot.children) {
                                 var temp = obj.getValue<Profile>()
+                                Toast.makeText(this@MainActivity, "Data OYE", Toast.LENGTH_LONG).show()
+
                                 if (temp?.user == "false") {
+
                                     startActivity(Intent(this@MainActivity, Traveler::class.java))
                                     finish()
 
@@ -57,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
                                 }
                             }
+//                            startActivity(intent)
 
 
                         }
@@ -71,7 +75,6 @@ class MainActivity : AppCompatActivity() {
                 else
                 {
                     startActivity(intent)
-                    finish()
                 }
             }
         },3000)

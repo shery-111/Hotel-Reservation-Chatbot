@@ -59,7 +59,7 @@ class Register : AppCompatActivity() {
             }
             else {
                 var prof:Profile=Profile()
-                val user = Firebase.auth.currentUser
+//                val user = Firebase.auth.currentUser
                 prof.initializeobject(fullnm,cnic,phone,us)
                 auth.createUserWithEmailAndPassword(email, pass)
                     .addOnCompleteListener(this) { task ->
@@ -75,12 +75,12 @@ class Register : AppCompatActivity() {
                             Toast.makeText(this, "Successful Registration", Toast.LENGTH_LONG).show()
                             if(!user11)
                             {
-                                startActivity(Intent(this,Traveler::class.java))
+                                startActivity(Intent(this@Register,Traveler::class.java))
                                 finish()
                             }
                             else
                             {
-                                startActivity(Intent(this,HotelStaff::class.java))
+                                startActivity(Intent(this@Register,HotelStaff::class.java))
                                 finish()
                             }
 
