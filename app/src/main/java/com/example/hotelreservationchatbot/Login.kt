@@ -17,6 +17,7 @@ import com.google.firebase.ktx.Firebase
 import org.w3c.dom.Text
 
 class Login : AppCompatActivity() {
+//    lateinit var user22:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -27,7 +28,7 @@ class Login : AppCompatActivity() {
         var logbt=findViewById<Button>(R.id.loginbtn)
         var forgot=findViewById<TextView>(R.id.forgot)
         var register=findViewById<TextView>(R.id.register)
-        var user22=""
+
 
         forgot.setOnClickListener {
             startActivity(Intent(this,Forgot::class.java))
@@ -40,38 +41,6 @@ class Login : AppCompatActivity() {
         val currentUser = auth.currentUser
         if(currentUser == null) {
 //        Toast.makeText(this,"Logged in",Toast.LENGTH_LONG).show()
-            val database=Firebase.database
-            val user = auth.currentUser
-            val uid: String = user?.uid.toString()
-            val db=database.getReference(uid)
-            db.addValueEventListener(object: ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-
-                    for(obj in snapshot.children)
-                    {
-                        var temp=obj.getValue<Profile>()
-                        if(temp?.user == "false")
-                        {
-                            user22="false"
-
-                        }
-                        else
-                        {
-                           user22="true"
-
-                        }
-                    }
-
-
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(this@Login,"Data cancelled",Toast.LENGTH_LONG).show()
-                }
-
-            })
-
 
             logbt.setOnClickListener {
                 var email = findViewById<EditText>(R.id.email).text.toString()
@@ -87,16 +56,43 @@ class Login : AppCompatActivity() {
                                 baseContext, "Successful login",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            if(user22=="true")
-                            {
-                                startActivity(Intent(this@Login,HotelStaff::class.java))
-                                finish()
-                            }
-                            else
-                            {
-                                startActivity(Intent(this@Login,Traveler::class.java))
-                                finish()
-                            }
+                            val database=Firebase.database
+                            val uid: String = user?.uid.toString()
+                            val db=database.getReference(uid)
+                            db.addValueEventListener(object: ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+
+                                    for(obj in snapshot.children)
+                                    {
+                                        var temp=obj.getValue<Profile>()
+                                        if(temp?.user == "false")
+                                        {
+                                            startActivity(Intent(this@Login,Traveler::class.java))
+                                            finish()
+
+                                        }
+                                        else
+                                        {
+                                            startActivity(Intent(this@Login,HotelStaff::class.java))
+                                            finish()
+
+                                        }
+                                    }
+
+
+
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {
+                                    Toast.makeText(this@Login,"Data cancelled",Toast.LENGTH_LONG).show()
+                                }
+
+                            })
+
+
+
+
+
 
 
                         } else {
@@ -110,43 +106,6 @@ class Login : AppCompatActivity() {
                         }
                     }
             }
-        }
-        else
-        {
-
-            val database=Firebase.database
-            val user = auth.currentUser
-            val uid: String = user?.uid.toString()
-            val db=database.getReference(uid)
-            db.addValueEventListener(object: ValueEventListener{
-                override fun onDataChange(snapshot: DataSnapshot) {
-
-                    for(obj in snapshot.children)
-                    {
-                        var temp=obj.getValue<Profile>()
-                        if(temp?.user == "false")
-                        {
-                            startActivity(Intent(this@Login,Traveler::class.java))
-                            finish()
-
-                        }
-                        else
-                        {
-                            startActivity(Intent(this@Login,HotelStaff::class.java))
-                            finish()
-
-                        }
-                    }
-
-
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    Toast.makeText(this@Login,"Data cancelled",Toast.LENGTH_LONG).show()
-                }
-
-            })
         }
 
     }

@@ -50,7 +50,7 @@ class Chatbot : AppCompatActivity() {
         mainActivity.sendBtn.setOnClickListener{
             val msg = mainActivity.messageBox.text.toString()
             sendMessage(msg)
-            Toast.makeText(this, "Message sent", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "Message sent", Toast.LENGTH_SHORT).show()
             mainActivity.messageBox.setText("")
         }
     }
@@ -65,7 +65,7 @@ class Chatbot : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
         val okHttpClient = OkHttpClient()
-        val retrofit = Retrofit.Builder().baseUrl("https://e919-2400-adc5-1c3-e400-2ce8-9375-5b1e-84fe.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
+        val retrofit = Retrofit.Builder().baseUrl("https://90e2-2400-adc5-1c3-e400-14ab-b726-7bbb-fb5b.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
             GsonConverterFactory.create()).build()
         val messagerSender = retrofit.create(MessageSender::class.java)
         val response = messagerSender.messageSender(userMessage)
@@ -86,29 +86,30 @@ class Chatbot : AppCompatActivity() {
                         var sub3=lines[3].substringAfter(':')
                         sub3=sub3.replace("[^0-9]".toRegex(), "")
                         var sub4=lines[4].substringAfter(':')
-                        Toast.makeText(this@Chatbot,sub1+sub2+"\n"+sub3+"\n"+sub4,Toast.LENGTH_LONG).show()
+//                        Toast.makeText(this@Chatbot,sub1+sub2+"\n"+sub3+"\n"+sub4,Toast.LENGTH_LONG).show()
                         var bk=Bookings()
                         var auth: FirebaseAuth = Firebase.auth
                         val database = Firebase.database
                         val user = auth.currentUser
                         val uid: String = user?.uid.toString()
                         val db = database.getReference("Hotels")
-                        var i=0;
-                        var bok=Bookings()
+
+                        var bok=Book()
                         db.addValueEventListener(object: ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
-
+                                var i=0
                                 for(obj in snapshot.children)
                                 {
                                     var temp=obj.getValue<Hotel>()
                                     if (temp != null) {
                                         if(sub1.contains(temp?.city.toString()) && (sub3>= temp?.economic.toString() || sub3>= temp?.luxury.toString()))
                                         {
-                                            i++
+
                                             bk.hname.add(temp?.name.toString())
                                             bk.loc.add(temp?.city.toString())
                                             bk.price.add(temp?.economic.toString().toInt())
                                             bk.checkin.add(sub4)
+//                                            Toast.makeText(this@Chatbot,bk[i].hname,Toast.LENGTH_SHORT).show()
                                             if(sub3>= temp?.economic.toString())
                                             {
                                                 bk.roomtype.add("economic")
@@ -117,21 +118,23 @@ class Chatbot : AppCompatActivity() {
                                             {
                                                 bk.roomtype.add("luxury")
                                             }
+                                            i++
                                         }
 
                                     }
                                 }
                                 bk.price.sort()
-                                bok.hname.add(bk.hname[0])
-                                bok.loc.add(bk.loc[0])
-                                bok.price.add(bk.price[0])
-                                bok.checkin.add(bk.checkin[0])
+                                bok.hname=bk.hname[0]
+                                bok.loc=bk.loc[0]
+                                bok.price=bk.price[0]
+                                bok.checkin=bk.checkin[0]
                                 bok.uid=uid
-                                bok.roomtype.add(bk.roomtype[0])
-                                bok.trooms.add(1)
-                                bok.checkout.add("")
+                                bok.roomtype=bk.roomtype[0]
+                                bok.trooms=1
+                                bok.checkout=""
+                                bok.rate=false
                                 val myRef = database.getReference("Bookings")
-                                myRef.setValue(bok)
+                                myRef.child(uid).child("Book"+System.currentTimeMillis()).setValue(bok)
                                 var not=NotificationCompat.Builder(this@Chatbot)
                                 not.setContentTitle("Congrats!")
                                 not.setContentText("The desired Hotel has been booked!")

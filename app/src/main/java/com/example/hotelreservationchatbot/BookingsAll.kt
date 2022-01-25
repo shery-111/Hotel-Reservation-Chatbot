@@ -16,7 +16,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class BookingsAll : AppCompatActivity() {
-    private lateinit var database: DatabaseReference
+//    private lateinit var database: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bookings_all)
@@ -25,17 +25,24 @@ class BookingsAll : AppCompatActivity() {
         imageView.alpha = 0.25f
         supportActionBar?.hide()
         var bk=Bookings()
-
+    bk.checkin.add("12 feb")
+    bk.hname.add("PC Hotel")
+    bk.loc.add("Bhurban")
+    bk.checkout.add("")
+    bk.roomtype.add("luxury")
+    bk.trooms.add(1)
+    bk.price.add(5000)
+    bk.rate.add(false)
 
         val database = Firebase.database
         val user = auth.currentUser
         val uid: String = user?.uid.toString()
         val db = database.getReference("Bookings")
-        db.addValueEventListener(object : ValueEventListener {
+        db.child(uid).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 for (obj in snapshot.children) {
-                    var temp = obj.getValue<Bookings>()
+                    var temp = obj.getValue<Book>()
+//                    Toast.makeText(this@BookingsAll,temp?.hname.toString(),Toast.LENGTH_SHORT).show()
                     if(temp?.uid.toString()==uid)
                     {
                         bk.checkin.add(temp?.checkin.toString())
@@ -45,9 +52,14 @@ class BookingsAll : AppCompatActivity() {
                         bk.roomtype.add(temp?.roomtype.toString())
                         bk.trooms.add(temp?.trooms.toString().toInt())
                         bk.price.add(temp?.price.toString().toInt())
+                        bk.rate.add(temp?.rate.toString().toBoolean())
+
+
                     }
 
                 }
+                var mylis=findViewById<ListView>(R.id.mylist)
+                mylis.adapter=CustomAdapter(this@BookingsAll,bk)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -56,8 +68,7 @@ class BookingsAll : AppCompatActivity() {
 
         })
 
-        var mylis=findViewById<ListView>(R.id.mylist)
-        mylis.adapter=CustomAdapter(this,bk)
+
 
     }
 }

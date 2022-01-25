@@ -19,9 +19,9 @@ class Forgot : AppCompatActivity() {
         val imageView = findViewById<ImageView>(R.id.fgp)
         imageView.alpha = 0.25f
         var auth: FirebaseAuth = Firebase.auth
-        var btn=findViewById<Button>(R.id.chkbtn)
+        var btn=findViewById<Button>(R.id.ratebtn)
 
-        onBackPressed()
+
 
         btn.setOnClickListener {
             var email=findViewById<EditText>(R.id.forgot_email).text.toString()
@@ -42,9 +42,5 @@ class Forgot : AppCompatActivity() {
             }
         }
     }
-
-    override fun onBackPressed() {
-        startActivity(Intent(this,Login::class.java))
-        finish()
-    }
+    
 }

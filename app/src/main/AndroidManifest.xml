@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HotelReservationChatbot">
-        <activity android:name=".Bookdetails"></activity>
+        <activity android:name=".Rating"></activity>
+        <activity android:name=".Bookdetails" />
         <activity android:name=".BookingsAll" />
         <activity android:name=".RoomInfo" />
         <activity android:name=".HotelInfo" />

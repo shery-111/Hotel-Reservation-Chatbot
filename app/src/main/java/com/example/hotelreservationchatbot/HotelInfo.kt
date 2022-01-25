@@ -18,6 +18,7 @@ import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
 class HotelInfo : AppCompatActivity() {
+    var i=0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hotel_info)
@@ -31,25 +32,37 @@ class HotelInfo : AppCompatActivity() {
         val user = auth.currentUser
         val uid: String = user?.uid.toString()
         val db = database.getReference("Hotels")
-        var i=0
+        var btn=findViewById<Button>(R.id.save_btn)
+
         var ht=Hotel()
         db.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                var hname = findViewById<EditText>(R.id.hname)
+                var address = findViewById<EditText>(R.id.address)
+                var city = findViewById<EditText>(R.id.city)
+                var phone = findViewById<EditText>(R.id.phn_hotel)
+                var eco = findViewById<EditText>(R.id.economic)
+                var lux = findViewById<EditText>(R.id.luxury)
 
                 for (obj in snapshot.children) {
                     var temp = obj.getValue<Hotel>()
                     if(temp?.uid.toString()==uid)
                     {
-                        ht.name=temp?.name.toString()
-                        ht.address=temp?.address.toString()
-                        ht.city=temp?.city.toString()
-                        ht.phone=temp?.phone.toString()
-                        ht.economic=temp?.economic.toString().toInt()
-                        ht.luxury=temp?.luxury.toString().toInt()
-                        i++
+                        hname.setText(temp?.name)
+                        address.setText(temp?.address)
+                        city.setText(temp?.city)
+                        phone.setText(temp?.phone)
+                        eco.setText(temp?.economic.toString())
+                        lux.setText(temp?.luxury.toString())
+//                        btn.setText("Save")
+                        i=i+1
+                        break
+
+
                     }
 
                 }
+//                Toast.makeText(this@HotelInfo,ht.name+ht.luxury,Toast.LENGTH_LONG).show()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -58,70 +71,52 @@ class HotelInfo : AppCompatActivity() {
 
         })
 
-
-
-
-
-
-
-
-        var btn=findViewById<Button>(R.id.save_btn)
-
-        if(i==0) {
             btn.setOnClickListener {
-                var hname = findViewById<EditText>(R.id.hname).text.toString()
-                var address = findViewById<EditText>(R.id.address).text.toString()
-                var city = findViewById<EditText>(R.id.city).text.toString()
-                var phone = findViewById<EditText>(R.id.phn_hotel).text.toString()
-                var eco = findViewById<EditText>(R.id.economic).text.toString().toInt()
-                var lux = findViewById<EditText>(R.id.luxury).text.toString().toInt()
 
-                if (hname.length < 5) {
-                    Toast.makeText(this, "Enter correct Hotel Name", Toast.LENGTH_LONG).show()
-                } else if (address.length < 8) {
-                    Toast.makeText(this, "Enter correct Address", Toast.LENGTH_LONG).show()
-                } else if (city.length < 5) {
-                    Toast.makeText(this, "Enter correct City", Toast.LENGTH_LONG).show()
-                } else if (phone.length != 11) {
-                    Toast.makeText(this, "Enter correct Phone", Toast.LENGTH_LONG).show()
-                } else if (lux < 500) {
-                    Toast.makeText(this, "Enter correct Luxury room price", Toast.LENGTH_LONG)
-                        .show()
-                } else {
+                    var hname = findViewById<EditText>(R.id.hname).text.toString()
+                    var address = findViewById<EditText>(R.id.address).text.toString()
+                    var city = findViewById<EditText>(R.id.city).text.toString()
+                    var phone = findViewById<EditText>(R.id.phn_hotel).text.toString()
+                    var eco = findViewById<EditText>(R.id.economic).text.toString().toInt()
+                    var lux = findViewById<EditText>(R.id.luxury).text.toString().toInt()
 
-                    val user = auth.currentUser
-                    val uid: String = user?.uid.toString()
-                    val database = Firebase.database
-                    val myRef = database.getReference("Hotels")
-                    var hotel = Hotel()
-                    hotel.initializeobject(hname, address, phone, city, eco, lux, uid)
-                    myRef.setValue(hotel)
-                    Toast.makeText(this, "Successfully saved Hotel Info", Toast.LENGTH_LONG).show()
-                    startActivity(Intent(this, HotelStaff::class.java))
-                    finish()
+                    if (hname.length < 5) {
+                        Toast.makeText(this, "Enter correct Hotel Name", Toast.LENGTH_LONG).show()
+                    } else if (address.length < 8) {
+                        Toast.makeText(this, "Enter correct Address", Toast.LENGTH_LONG).show()
+                    } else if (city.length < 5) {
+                        Toast.makeText(this, "Enter correct City", Toast.LENGTH_LONG).show()
+                    } else if (phone.length != 11) {
+                        Toast.makeText(this, "Enter correct Phone", Toast.LENGTH_LONG).show()
+                    } else if (lux < 500) {
+                        Toast.makeText(this, "Enter correct Luxury room price", Toast.LENGTH_LONG)
+                            .show()
+                    } else {
 
-                    onBackPressed()
+                        val user = auth.currentUser
+                        val uid: String = user?.uid.toString()
+                        val database = Firebase.database
+                        val myRef = database.getReference("Hotels")
+                        var hotel = Hotel()
+                        hotel.initializeobject(hname, address, phone, city, eco, lux, uid)
+                        myRef.child(uid).setValue(hotel)
+                        Toast.makeText(this, "Successfully saved Hotel Info", Toast.LENGTH_LONG)
+                            .show()
+                        startActivity(Intent(this, HotelStaff::class.java))
+                        finish()
 
-                }
+                    }
+
+
             }
-        }
-        else
-        {
-            var hname = findViewById<EditText>(R.id.hname)
-            var address = findViewById<EditText>(R.id.address)
-            var city = findViewById<EditText>(R.id.city)
-            var phone = findViewById<EditText>(R.id.phn_hotel)
-            var eco = findViewById<EditText>(R.id.economic)
-            var lux = findViewById<EditText>(R.id.luxury)
-            hname.setText(ht.name)
-            address.setText(ht.address)
-            city.setText(ht.city)
-            hname.setText(ht.name)
-            phone.setText(ht.phone)
-            eco.setText(ht.economic)
-            lux.setText(ht.luxury)
-            btn.setText("Back")
-        }
+
+
+
+//            onBackPressed()
+
+
+
+
     }
     override fun onBackPressed() {
 

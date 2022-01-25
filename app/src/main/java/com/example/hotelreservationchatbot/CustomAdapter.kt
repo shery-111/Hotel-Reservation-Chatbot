@@ -20,7 +20,7 @@ class CustomAdapter(var con:Context, var books:Bookings) : BaseAdapter () {
         val editor=mysharedpref.edit()
 
         item.hname.text=books.hname.get(p0)
-        item.Date.text=books.checkin.get(p0)
+        item.Date.text="check-in: "+books.checkin.get(p0)
         item.loc.text=books.loc.get(p0)
         item.btnview.setOnClickListener {
             editor.putString("hname",books.hname.get(p0))
@@ -30,6 +30,7 @@ class CustomAdapter(var con:Context, var books:Bookings) : BaseAdapter () {
             editor.putInt("trooms",books.trooms.get(p0))
             editor.putString("roomtype",books.roomtype.get(p0))
             editor.putInt("price",books.price.get(p0))
+            editor.putBoolean("rate",books.rate.get(p0))
             editor.apply()
             editor.commit()
             val i = Intent(con, Bookdetails::class.java)
