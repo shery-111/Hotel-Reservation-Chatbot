@@ -21,18 +21,11 @@ class BookingsAll : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bookings_all)
         val imageView = findViewById<ImageView>(R.id.fgp)
-        var auth: FirebaseAuth = Firebase.auth
+
         imageView.alpha = 0.25f
         supportActionBar?.hide()
+    var auth: FirebaseAuth = Firebase.auth
         var bk=Bookings()
-    bk.checkin.add("12 feb")
-    bk.hname.add("PC Hotel")
-    bk.loc.add("Bhurban")
-    bk.checkout.add("")
-    bk.roomtype.add("luxury")
-    bk.trooms.add(1)
-    bk.price.add(5000)
-    bk.rate.add(false)
 
         val database = Firebase.database
         val user = auth.currentUser

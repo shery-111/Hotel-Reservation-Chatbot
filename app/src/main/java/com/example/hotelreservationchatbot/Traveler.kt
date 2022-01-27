@@ -44,6 +44,8 @@ class Traveler : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
 
         }
         recm.setOnClickListener {
+            startActivity(Intent(this,RecHotels::class.java))
+            finish()
 
         }
 
