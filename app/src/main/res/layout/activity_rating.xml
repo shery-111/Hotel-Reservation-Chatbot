@@ -72,7 +72,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/review"
         android:layout_width="281dp"
         android:layout_height="114dp"
         android:layout_marginStart="65dp"
@@ -83,6 +83,7 @@
         android:ems="10"
         android:hint="Give Review"
         android:inputType="textPersonName"
+        android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

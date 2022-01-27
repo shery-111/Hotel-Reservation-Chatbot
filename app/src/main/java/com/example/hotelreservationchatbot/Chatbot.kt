@@ -67,7 +67,7 @@ class Chatbot : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
         val okHttpClient = OkHttpClient()
-        val retrofit = Retrofit.Builder().baseUrl("https://278f-72-255-5-143.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
+        val retrofit = Retrofit.Builder().baseUrl("https://7387-111-119-187-57.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
             GsonConverterFactory.create()).build()
         val messagerSender = retrofit.create(MessageSender::class.java)
         val response = messagerSender.messageSender(userMessage)
@@ -88,21 +88,20 @@ class Chatbot : AppCompatActivity() {
                         var sub3=lines[3].substringAfter(':')
                         sub3=sub3.replace("[^0-9]".toRegex(), "")
                         var sub4=lines[4].substringAfter(':')
-                        for(obj in city)
-                        {
-                            if(sub1.contains(obj,ignoreCase = true))
-                            {
-                                sub1=obj
-                            }
-                        }
-                        for(obj in months)
-                        {
-                            if(sub4.contains(obj,ignoreCase = true))
-                            {
-                                sub4=sub4.replace("[^0-9]".toRegex(), "")
-                                sub4=sub4+" "+obj
-                            }
-                        }
+//                        for(obj in city)
+//                        {
+//                            if(sub1.contains(obj,ignoreCase = true))
+//                            {
+//                                sub1=obj
+//                            }
+//                        }
+//                        for(obj in months)
+//                        {
+//                            if(sub4.contains(obj,ignoreCase = true))
+//                            {
+//                                sub4=sub4+" "+obj
+//                            }
+//                        }
 //                        Toast.makeText(this@Chatbot,sub1+sub2+"\n"+sub3+"\n"+sub4,Toast.LENGTH_LONG).show()
                         var bk=Bookings()
                         var auth: FirebaseAuth = Firebase.auth

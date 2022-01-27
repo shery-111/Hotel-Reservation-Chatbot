@@ -47,6 +47,7 @@
             android:background="@drawable/custombutton"
             android:gravity="center"
             android:hint="Enter Email"
+            android:inputType="textEmailAddress"
             android:textColorHint="#FFFBF6" />
 
         <Button

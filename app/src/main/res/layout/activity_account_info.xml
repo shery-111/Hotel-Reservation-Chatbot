@@ -70,6 +70,7 @@
             android:editable="false"
             android:gravity="center"
             android:hint="Email"
+            android:inputType="textEmailAddress"
             android:textColorHint="#FFFBF6" />
 
         <EditText
@@ -80,6 +81,7 @@
             android:background="@drawable/custombutton"
             android:gravity="center"
             android:hint="Phone Number"
+            android:inputType="phone"
             android:textColorHint="#FFFBF6" />
 
 

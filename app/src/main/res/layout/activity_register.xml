@@ -66,6 +66,7 @@
             android:background="@drawable/custombutton"
             android:gravity="center"
             android:hint="Enter Email"
+            android:inputType="textEmailAddress"
             android:textColorHint="#FFFBF6" />
 
         <EditText
@@ -76,6 +77,7 @@
             android:background="@drawable/custombutton"
             android:gravity="center"
             android:hint="Enter Phone NUmber"
+            android:inputType="phone"
             android:textColorHint="#FFFBF6" />
 
         <EditText
