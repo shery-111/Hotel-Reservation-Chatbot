@@ -16,6 +16,7 @@
         app:menu="@menu/navigation_menue"
         android:id="@+id/nav_menue"
         android:layout_gravity="start"/>
+    
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

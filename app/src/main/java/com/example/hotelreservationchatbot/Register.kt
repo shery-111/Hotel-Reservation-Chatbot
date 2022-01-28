@@ -45,7 +45,7 @@ class Register : AppCompatActivity() {
             var fullnm=findViewById<EditText>(R.id.full_name).text.toString()
             var cnic=findViewById<EditText>(R.id.cnic).text.toString()
             var phone=findViewById<EditText>(R.id.phone).text.toString()
-            if(cnic.length!=13)
+            if(cnic.length<13 && cnic.length>13)
             {
                 Toast.makeText(this, "Invalid CNIC", Toast.LENGTH_LONG).show()
             }
@@ -53,7 +53,7 @@ class Register : AppCompatActivity() {
             {
                 Toast.makeText(this, "Invalid Full Name", Toast.LENGTH_LONG).show()
             }
-            else if(phone.length!=11)
+            else if(phone.length<11 && phone.length>11)
             {
                 Toast.makeText(this, "Invalid Phone Number", Toast.LENGTH_LONG).show()
             }

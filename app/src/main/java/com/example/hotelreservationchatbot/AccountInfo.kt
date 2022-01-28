@@ -16,6 +16,7 @@ import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.activity_account_info.*
 import kotlin.properties.Delegates
 
 class AccountInfo : AppCompatActivity() {
@@ -62,7 +63,7 @@ class AccountInfo : AppCompatActivity() {
         })
 
 
-
+        email_ai.keyListener=null
 
 
         binding.save.setOnClickListener {
@@ -70,43 +71,46 @@ class AccountInfo : AppCompatActivity() {
             val fnm = fullnm.text.toString()
             val cn = cnic.text.toString()
             val phn = phone.text.toString()
-            val alertDialog: AlertDialog
-            val builder = AlertDialog.Builder(this)
+            if (cn.length < 13 && cn.length > 13) {
+                Toast.makeText(this, "Invalid CNIC", Toast.LENGTH_LONG).show()
+            } else if (fnm.length < 3) {
+                Toast.makeText(this, "Invalid Full Name", Toast.LENGTH_LONG).show()
+            } else if (phn.length < 11 && phn.length > 11) {
+                Toast.makeText(this, "Invalid Phone Number", Toast.LENGTH_LONG).show()
+            } else {
+                val alertDialog: AlertDialog
+                val builder = AlertDialog.Builder(this)
                 builder.setTitle("My Account Info")
                 builder.setMessage("Are you sure, you want to change the data?")
-            builder.apply {
-                setPositiveButton("Yes",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        updateData(fnm, cn, phn, uid)
-                        if(user22=="false"){
-                        startActivity(Intent(this@AccountInfo,Traveler::class.java))
-                        finish()}
-                        else
-                        {
-                            startActivity(Intent(this@AccountInfo,HotelStaff::class.java))
-                            finish()
-                        }
-                    })
-                setNegativeButton("Go back",
-                    DialogInterface.OnClickListener { dialog, id ->
-                        if(user22=="false"){
-                            startActivity(Intent(this@AccountInfo,Traveler::class.java))
-                            finish()}
-                        else
-                        {
-                            startActivity(Intent(this@AccountInfo,HotelStaff::class.java))
-                            finish()
-                        }
-                    })
-            }
+                builder.apply {
+                    setPositiveButton("Yes",
+                        DialogInterface.OnClickListener { dialog, id ->
+                            updateData(fnm, cn, phn, uid)
+                            if (user22 == "false") {
+                                startActivity(Intent(this@AccountInfo, Traveler::class.java))
+                                finish()
+                            } else {
+                                startActivity(Intent(this@AccountInfo, HotelStaff::class.java))
+                                finish()
+                            }
+                        })
+                    setNegativeButton("Go back",
+                        DialogInterface.OnClickListener { dialog, id ->
+                            if (user22 == "false") {
+                                startActivity(Intent(this@AccountInfo, Traveler::class.java))
+                                finish()
+                            } else {
+                                startActivity(Intent(this@AccountInfo, HotelStaff::class.java))
+                                finish()
+                            }
+                        })
+                }
                 builder.create()
                 builder.show()
 
 
-
-
+            }
         }
-
 
     }
 

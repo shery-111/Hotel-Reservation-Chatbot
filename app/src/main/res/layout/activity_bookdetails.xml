@@ -172,7 +172,7 @@
         android:layout_marginEnd="81dp"
         android:layout_marginBottom="64dp"
         android:background="@drawable/custombutton2"
-        android:text="Checkout"
+        android:text="BACK"
         android:textAllCaps="false"
         android:textColor="#FFFBF6"
         android:textSize="14sp"

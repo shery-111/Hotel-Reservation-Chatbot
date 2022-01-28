@@ -67,7 +67,7 @@ class Chatbot : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
         val okHttpClient = OkHttpClient()
-        val retrofit = Retrofit.Builder().baseUrl("https://7387-111-119-187-57.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
+        val retrofit = Retrofit.Builder().baseUrl("https://fa9a-2400-adc5-1c3-e400-bdb9-113a-713a-1b7b.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
             GsonConverterFactory.create()).build()
         val messagerSender = retrofit.create(MessageSender::class.java)
         val response = messagerSender.messageSender(userMessage)

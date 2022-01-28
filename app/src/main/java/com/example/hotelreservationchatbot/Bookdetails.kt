@@ -48,23 +48,10 @@ class Bookdetails : AppCompatActivity() {
 
 
             ratebtn.setOnClickListener{
-                if(checkout?.length>5)
-                {
-                    chkout.setText(checkout)
-                    ratebtn.setOnClickListener {
-                        startActivity(Intent(this,BookingsAll::class.java))
-                        finish()
-                    }
-                }
-                else
-                {
-                val date: String =
-                    SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
-                    ratebtn.setText("Back")
-                chkout.setText(date)
-                checkout=date
-                Toast.makeText(this,"You have been checked out from Hotel! Checkout date added",Toast.LENGTH_LONG).show()
-            }}
+
+                startActivity(Intent(this,BookingsAll::class.java))
+                finish()
+            }
 
 
 
