@@ -10,4 +10,17 @@ class Book {
     var trooms:Int=0
     var rate:Boolean=false
     var uid:String=""
+
+    fun initializeobject(hn:String,lc:String,pric:Int, chkin:String,chkout:String,rmt:String,trm:Int,rt:Boolean,ui:String)
+    {
+        hname=hn
+        loc=lc
+        price=pric
+        checkin=chkin
+        checkout=chkout
+        roomtype=rmt
+        uid=ui
+        trooms=trm
+        rate=rt
+    }
 }

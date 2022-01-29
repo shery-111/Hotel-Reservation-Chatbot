@@ -45,6 +45,7 @@ class Bookdetails : AppCompatActivity() {
         chkin.setText(checkin)
         trms.setText(trooms)
         rmtype.setText(roomtype)
+        chkout.setText(checkout)
 
 
             ratebtn.setOnClickListener{

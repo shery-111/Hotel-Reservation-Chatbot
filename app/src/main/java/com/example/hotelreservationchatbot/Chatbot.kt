@@ -1,14 +1,8 @@
 package com.example.hotelreservationchatbot
 
-import android.R
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.hotelreservationchatbot.databinding.ActivityChatbotBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -26,6 +20,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class Chatbot : AppCompatActivity() {
@@ -67,7 +65,7 @@ class Chatbot : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         }
         val okHttpClient = OkHttpClient()
-        val retrofit = Retrofit.Builder().baseUrl("https://fa9a-2400-adc5-1c3-e400-bdb9-113a-713a-1b7b.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
+        val retrofit = Retrofit.Builder().baseUrl("https://f7f4-2400-adc5-1c3-e400-ec9d-f1d7-c19f-60f6.ngrok.io/webhooks/rest/").client(okHttpClient).addConverterFactory(
             GsonConverterFactory.create()).build()
         val messagerSender = retrofit.create(MessageSender::class.java)
         val response = messagerSender.messageSender(userMessage)
@@ -88,6 +86,18 @@ class Chatbot : AppCompatActivity() {
                         var sub3=lines[3].substringAfter(':')
                         sub3=sub3.replace("[^0-9]".toRegex(), "")
                         var sub4=lines[4].substringAfter(':')
+                        if(sub4.contains("tareekh",ignoreCase = true)|| sub4.contains("tarikh",ignoreCase = true))
+                        {
+                            val dateFormat: DateFormat = SimpleDateFormat("MM")
+                            val date = Date()
+                            sub4=sub4.replace("[^0-9]".toRegex(), "")
+                            sub4 += "-"+dateFormat.format(date)+"-2022"
+                        }
+                        if(!sub4.contains("2022",ignoreCase = true))
+                        {
+                            sub4+="-2022"
+                        }
+                        var sub5=lines[4].substringAfter(':')
 //                        for(obj in city)
 //                        {
 //                            if(sub1.contains(obj,ignoreCase = true))
@@ -102,7 +112,7 @@ class Chatbot : AppCompatActivity() {
 //                                sub4=sub4+" "+obj
 //                            }
 //                        }
-//                        Toast.makeText(this@Chatbot,sub1+sub2+"\n"+sub3+"\n"+sub4,Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@Chatbot,sub1+sub2+"\n"+sub3+"\n"+sub4,Toast.LENGTH_LONG).show()
                         var bk=Bookings()
                         var auth: FirebaseAuth = Firebase.auth
                         val database = Firebase.database
@@ -118,52 +128,61 @@ class Chatbot : AppCompatActivity() {
                                 {
                                     var temp=obj.getValue<Hotel>()
                                     if (temp != null) {
-                                        if(sub1.contains(temp?.city.toString()) && (sub3>= temp?.economic.toString() || sub3>= temp?.luxury.toString()))
+                                        if(sub1.contains(temp?.city.toString(),ignoreCase = true) && (sub3.toInt()>= temp?.luxury))
                                         {
 
-                                            bk.hname.add(temp?.name.toString())
-                                            bk.loc.add(temp?.city.toString())
-                                            bk.price.add(temp?.economic.toString().toInt())
-                                            bk.checkin.add(sub4)
+                                            bok.hname=temp?.name.toString()
+                                            bok.loc=temp?.city.toString()
+                                            bok.price=temp?.economic.toString().toInt()
+                                            bok.checkin=sub4
+                                            bok.trooms=1
+                                            bok.checkout="for "+sub2+" days"
+                                            bok.rate=false
+                                            bok.uid=uid
 //                                            Toast.makeText(this@Chatbot,bk[i].hname,Toast.LENGTH_SHORT).show()
-                                            if(sub3>= temp?.economic.toString())
+                                            if(sub5.contains("economic",ignoreCase = true))
                                             {
-                                                bk.roomtype.add("economic")
+                                                bok.roomtype="economic"
                                             }
                                             else
                                             {
-                                                bk.roomtype.add("luxury")
+                                                bok.roomtype="luxury"
                                             }
-                                            i++
+                                            val myRef = database.getReference("Bookings")
+                                            myRef.child(uid).child("Book"+System.currentTimeMillis()).setValue(bok)
+                                            Toast.makeText(this@Chatbot,"Congrats! The Hotel has been booked!",Toast.LENGTH_LONG).show()
+
+                                            break
                                         }
 
                                     }
                                 }
-                                if(i>0)
-                                {
-                                    bk.price.sort()
-                                    bok.hname=bk.hname[0]
-                                    bok.loc=bk.loc[0]
-                                    bok.price=bk.price[0]
-                                    bok.checkin=bk.checkin[0]
-                                    bok.uid=uid
-                                    bok.roomtype=bk.roomtype[0]
-                                    bok.trooms=1
-                                    bok.checkout=""
-                                    bok.rate=false
-                                    val myRef = database.getReference("Bookings")
-                                    myRef.child(uid).child("Book"+System.currentTimeMillis()).setValue(bok)
-                                }
-                                var not=NotificationCompat.Builder(this@Chatbot)
-                                not.setContentTitle("Congrats!")
-                                not.setContentText("The desired Hotel has been booked!")
-                                not.setSmallIcon(R.drawable.ic_notification_overlay)
-                                var fin=not.build()
-                                var notManager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                                notManager.notify(1,fin)
-                                Toast.makeText(this@Chatbot,"You will be notified shortly!",Toast.LENGTH_LONG).show()
-                                startActivity(Intent(this@Chatbot,Traveler::class.java))
-                                finish()
+//                                    sub4=sub4.replace("[^0-9]".toRegex(), "")
+//                                if(sub1.toInt()>30)
+//                                {
+//
+//                                }
+//                                    bk.price.sort()
+//                                Toast.makeText(this@Chatbot,bk.hname[0]+bk.loc[0],Toast.LENGTH_LONG).show()
+//                                bok.initializeobject(bk.hname[0],bk.loc[0],bk.price[0],bk.checkin[0],bk.checkout[0],bk.roomtype[0],1,false,uid)
+//                                    bok.hname=bk.hname[0]
+//                                    bok.loc=bk.loc[0]
+//                                    bok.price=bk.price[0]
+//                                    bok.checkin=bk.checkin[0]
+//
+//                                    bok.roomtype=bk.roomtype[0]
+
+
+
+//                                var not=NotificationCompat.Builder(this@Chatbot)
+//                                not.setContentTitle("Congrats!")
+//                                not.setContentText("The desired Hotel has been booked!")
+//                                not.setSmallIcon(R.drawable.ic_notification_overlay)
+//                                var fin=not.build()
+//                                var notManager=getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+//                                notManager.notify(1,fin)
+//                                startActivity(Intent(this@Chatbot,Traveler::class.java))
+//                                finish()
 
                             }
 

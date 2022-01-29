@@ -19,7 +19,8 @@
         <activity android:name=".RoomInfo" />
         <activity android:name=".HotelInfo" />
         <activity android:name=".AccountInfo" />
-        <activity android:name=".Chatbot" />
+        <activity android:name=".Chatbot"
+                  android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".Forgot" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />

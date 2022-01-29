@@ -21,6 +21,7 @@
         app:srcCompat="@drawable/_378" />
 
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -197,6 +198,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
